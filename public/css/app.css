@@ -17,6 +17,14 @@ Use a better box model (opinionated).
   box-sizing: border-box;
 }
 
+.bg-blue-color{
+  background-color: #3466aa;
+}
+
+.white-color{
+  color: #f1f1f1;
+}
+
 /**
 Use a more readable tab size (opinionated).
 */

@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <img src="storage/logo_lbi.png" class="w-40 h-40">
+            <img src="img/logo.png" class="w-40 h-40">
         </x-slot>
 
         <!-- Validation Errors -->
