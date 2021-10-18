@@ -1,58 +1,48 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <img src="img/logo.png" alt="logo_lbi" class="w-40 h-40">
-        </x-slot>
+@extends('layouts.template.auth')
+@section('content')
+<section class="sign-in" style="margin-top: 8%">
+            <div class="container">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <figure><img src="{{asset('Admin/images/login.png')}}" alt="sing up image"></figure>
+                        <a href="/register" class="signup-image-link">Create an account</a>
+                    </div>
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+                    <div class="signin-form">
+                        <h2 class="form-title">Login User</h2>
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                        <form method="POST" action="/postlogin" class="register-form" id="login-form">
+                            @csrf
+                            <div class="form-group">
+                                <label for="your_email"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="email" id="your_email" placeholder="Your Email"/ value="{{old('email')}}">
+                            </div>
+                            @error('email')
+                                <div class="invalid-feedback mt-2" style="margin-top: -8%">{{ $message }}</div>
+                            @enderror
+                            <div class="form-group">
+                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password" id="your_pass" placeholder="Password"/>
+                            </div>
+                            @error('password')
+                                <div class="invalid-feedback mt-2" style="margin-top: -8%">{{ $message }}</div>
+                            @enderror
+                            @if (session('status'))
+                            <div class="alert alert-danger" style="margin-top: -8%">
+                                {{ session('status') }}
+                            </div>
+                            @endif
+                            <div class="form-group">
+                                <input type="checkbox" name="rememberme" id="remember-me" class="agree-term" />
+                                <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit"  class="form-submit" value="Log in"/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
+        </section>
+@endsection
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
-            </div>
-
-            <!-- Remember Me -->
-            <!-- <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div> -->
-            
-
-            <div class="flex items-center justify-end mt-4">
-                <!-- @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif -->
-                @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Don't have an account yet? Register here</a>
-                @endif
-
-                <x-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
