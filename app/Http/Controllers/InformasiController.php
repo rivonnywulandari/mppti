@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class InformasiController extends Controller
 {
@@ -13,9 +14,18 @@ class InformasiController extends Controller
      */
     public function index()
     {
-        //
+        $informasi = DB::table('informasi')->orderby('id', 'desc')->get();
+        return view('aslab.informasi', ['informasi'=>$informasi]);
     }
-
+    public function add_process(Request $informasi)
+    {
+        DB::table('informasi')->insert([
+            'judul'=>$informasi->judul,
+            'isi'=>$informasi->isi
+        ]);
+ 
+        return redirect()->action([InformasiController::class, 'index']);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -43,9 +53,10 @@ class InformasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function detail($id)
     {
-        //
+        $informasi = DB::table('informasi')->where('id', $id)->first();
+        return view('aslab.detail', ['informasi'=>$informasi]);
     }
 
     /**
@@ -56,7 +67,17 @@ class InformasiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $informasi = DB::table('informasi')->where('id', $id)->first();
+        return view('aslab.editInfo', ['informasi'=>$informasi]);
+    }
+    public function edit_process(Request $informasi)
+    {
+        $id = $informasi->id;
+        $judul = $informasi->judul;
+        $isi = $informasi->isi;
+        DB::table('informasi')->where('id', $id)
+                            ->update(['judul' => $judul, 'isi' => $isi]);
+        return redirect()->action([InformasiController::class, 'index']);
     }
 
     /**
@@ -79,6 +100,8 @@ class InformasiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('informasi')->where('id', $id)
+                            ->delete();
+        return redirect()->action([InformasiController::class, 'index']);
     }
 }

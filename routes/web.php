@@ -25,6 +25,20 @@ Route::get('/logout', [AuthController::class, 'logout']);
 //     return view('auth.login');
 // });
 
+Route::get('/add', function () {
+    return view('aslab.addInfo');
+});
+
+use App\Http\Controllers\InformasiController;
+Route::get('/info', [InformasiController::class, 'index']);
+Route::post('/add_process', [InformasiController::class, 'add_process']);
+Route::get('/detail/{id}', [InformasiController::class, 'detail']);
+Route::get('/edit/{id}', [InformasiController::class, 'edit']);
+Route::post('/edit_process', [InformasiController::class, 'edit_process']);
+Route::get('/delete/{id}', [InformasiController::class, 'destroy']);
+
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
