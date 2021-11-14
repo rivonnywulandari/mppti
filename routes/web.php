@@ -52,5 +52,38 @@ Route::post('/gantipassword/{id}/updatepass', [PengaturanController::class, 'upd
 
 
 
+Route::get('/addinfo', function () {
+    return view('aslab.addInfo'); //halaman form tambah info
+});
+Route::get('/addSeleksi', function () {
+    return view('aslab.addSeleksi'); //halaman form tambah seleksi
+});
+
+use App\Http\Controllers\JenisSeleksiController;
+Route::get('/seleksi', [JenisSeleksiController::class, 'index']); //daftar seleksi *untuk input
+Route::post('/tambah_seleksi', [JenisSeleksiController::class, 'add_process']); //proses menambah seleksi
+Route::get('/seleksi_edit', [JenisSeleksiController::class, 'index_edit']);
+
+use App\Http\Controllers\SeleksiController;
+Route::post('/input_nilai', [SeleksiController::class, 'input_nilai']); //input nilai
+Route::get('/daftarnilai/{ids}', [SeleksiController::class, 'index']); //melihat daftar nilai peserta pada salah satu tahap
+Route::get('/input/{id}/{ids}', [SeleksiController::class, 'tampil_input']); //input nilai
+Route::get('/menupenilaian', [SeleksiController::class, 'menu']); //halaman menu input/edit nilai peserta
+Route::get('/daftarnilai_edit/{ids}', [SeleksiController::class, 'index_edit']);
+Route::get('/edit_nilai/{id}/{ids}', [SeleksiController::class, 'tampil_edit']);
+Route::post('/edit_nilai_process', [SeleksiController::class, 'edit_nilai_process']);
+
+use App\Http\Controllers\InformasiController;
+// Route::get('/dashboardaslab', [InformasiController::class, 'index']);
+Route::post('/add_process', [InformasiController::class, 'add_process']);
+Route::get('/detail/{id}', [InformasiController::class, 'detail']);
+Route::get('/edit/{id}', [InformasiController::class, 'edit']);
+Route::post('/edit_process', [InformasiController::class, 'edit_process']);
+Route::get('/delete/{id}', [InformasiController::class, 'destroy']);
+
+
+
+Route::get('/dashboardaslab', [InformasiController::class, 'index'])
+        ->middleware(['auth'])->name('aslab.dashboardaslab');
 
 require __DIR__.'/auth.php';

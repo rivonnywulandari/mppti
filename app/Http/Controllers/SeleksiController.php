@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use App\Models\Seleksi;
+use App\Models\JenisSeleksi;
 
 class SeleksiController extends Controller
 {
@@ -11,9 +15,66 @@ class SeleksiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($ids)
     {
-        //
+        $jenis = DB::table('jenisseleksi')->where('id', $ids)->first();
+        $user = Seleksi::select('id_users')->where('id_seleksi', $ids)->get()->toArray();
+        $users = User::select('id', 'name')->whereNotIn('id', $user)->orderby('id', 'desc')->get();
+        return view('aslab.detailnilai', ['user'=>$users], ['jenis'=>$jenis]);
+    }
+    public function index_edit($id)
+    {
+        $jenis = DB::table('jenisseleksi')->where('id', $id)->first();
+        $user = DB::table('seleksi')->orderby('seleksi.id_users', 'desc')
+                    ->join('users', 'users.id', '=', 'seleksi.id_users')
+                    ->where('id_seleksi', $id)
+                    ->get();
+        return view('aslab.detailnilai_edit', ['user'=>$user], ['jenis'=>$jenis]);
+    }
+    public function tampil_input($id,$ids)
+    {
+        $tampil = DB::table('users')->where('id', $id)->first();
+        $jenis  = DB::table('jenisseleksi')->where('id', $ids)->first();
+        return view('aslab.inputNilai', ['tampil'=>$tampil], ['jenis'=>$jenis]);
+    }
+    public function input_nilai(Request $seleksi)
+    {   
+        $input = DB::table('seleksi')->insert([
+            'id_users'=>$seleksi->id_peserta,
+            'id_seleksi'=>$seleksi->id_seleksi,
+            'nilai'=>$seleksi->nilai,
+            'keterangan'=>$seleksi->keterangan
+        ]);
+ 
+        return redirect()->action(
+            [SeleksiController::class, 'index'], ['ids' => $seleksi->id_seleksi]
+        );
+    }
+
+    public function menu()
+    {
+        $tahap = DB::table('jenisseleksi')->orderby('id', 'desc')->get();
+        return view('aslab.menupenilaian', ['tahap'=>$tahap]);
+    }
+    public function tampil_edit($id,$ids)
+    {
+        $nilai = DB::table('seleksi')
+                ->where('id_seleksi', $ids)
+                ->Where('id_users', $id)
+                ->first();
+        $users = DB::table('users')->where('id', $id)->first();
+        return view('aslab.editNilai', ['nilai'=>$nilai], ['user'=>$users]);
+    }
+    public function edit_nilai_process(Request $seleksi)
+    {
+        $id_seleksi = $seleksi->id_seleksi;
+        $id_peserta = $seleksi->id_peserta;
+        $nilai = $seleksi->nilai;
+        $keterangan = $seleksi->keterangan;
+        DB::table('seleksi')->where('id_users', $id_peserta)
+                            ->where('id_seleksi', $id_seleksi)
+                            ->update(['nilai' => $nilai, 'keterangan' => $keterangan]);
+        return redirect()->action([SeleksiController::class, 'index_edit'], ['ids' => $seleksi->id_seleksi]);
     }
 
     /**
@@ -45,7 +106,7 @@ class SeleksiController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -56,7 +117,7 @@ class SeleksiController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**

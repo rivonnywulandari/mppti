@@ -29,7 +29,8 @@ class AuthController extends Controller
         if (Auth::attempt($re,$ingat)) {
             if (Auth()->user()->role == 'aslab') {
                 return redirect('/dashboardaslab');
-            }else if (Auth()->user()->role == 'peserta') {
+            
+            }else if (Auth()->user()->role == 'users') {
                 return redirect('/dashboardpeserta');
             }
         }else{
