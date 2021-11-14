@@ -21,7 +21,9 @@ class InformasiController extends Controller
     {
         DB::table('informasi')->insert([
             'judul'=>$informasi->judul,
-            'isi'=>$informasi->isi
+            'isi'=>$informasi->isi,
+            'id_users'=>$informasi->id_users,
+            'tujuan_informasi'=>$informasi->get('jenis')
         ]);
  
         return redirect()->action([InformasiController::class, 'index']);

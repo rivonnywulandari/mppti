@@ -12,6 +12,14 @@
                 <label>Isi Artikel</label>
                 <textarea class="form-control" name="isi" rows="15"></textarea>
             </div>
+            <div class="col-md-6">
+            <select name="jenis" id="jenis" class="form-control">
+                <option value=""> --Pilih Jenis Informasi-- </option>
+                <option value="umum">Umum</option>
+                <option value="magang">Magang</option>
+            </select>
+        </div>
+            <input type="hidden" class="form-control" name="id_users" value="{{ Auth::user()->id }}">
     </div>
 
     <div class="col-md-3 ml-md-5 col-sm-12 bg-white p-4" style="height:120px !important">
