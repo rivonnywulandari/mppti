@@ -15,7 +15,7 @@ class CreateSeleksiTable extends Migration
     {
         Schema::create('seleksi', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_users')->constrained('users')
+            $table->foreignId('id')->constrained('daftar')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
             $table->foreignId('id_seleksi')->constrained('jenisseleksi')
