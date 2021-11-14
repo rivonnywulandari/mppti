@@ -16,9 +16,14 @@ class User extends Authenticatable
      *
      * @var array
      */
+    public $timestamps = false;
+
+    protected $table = 'users';
+    protected $primaryKey = 'id';
     protected $fillable = [
-        'id',
+        
         'name',
+        'nim',
         'email',
         'role',
         'password',
@@ -43,27 +48,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    // relasi ke table profile
-    public function profile(){
-        return $this->hasOne(Profile::class,'user_id','id');
-    }
-    public function pertanyaan(){
-        return $this->hasMany(Pertanyaan::class,'user_id','id');
-    }
-    public function jawaban()
+    // relasi ke table daftar
+
+    public function daftar()
     {
-        return $this->hasMany(Jawaban::class,'user_id','id');
+        return $this->hasMany(Daftar::class,'id');
     }
-    public function follower()
-    {
-        return $this->hasMany(Follower::class, 'user_id', 'id');
-    }
-    // public function komentar_pertanyaan()
-    // {
-    //     return $this->hasMany(komentar_pertanyaan::class, 'user_id', 'id');
-    // }
-    // public function komentar_jawaban()
-    // {
-    //     return $this->hasMany(komentar_jawaban::class, 'user_id', 'id');
-    // }
+
+    
 }

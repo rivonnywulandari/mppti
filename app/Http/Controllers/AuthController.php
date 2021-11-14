@@ -27,10 +27,10 @@ class AuthController extends Controller
         $ingat = $request->rememberme ? true : false;
         $re = $request->only('email','password');
         if (Auth::attempt($re,$ingat)) {
-            if (Auth()->user()->role == 'admin') {
-                return redirect('/dashboard');
-            }else if (Auth()->user()->role == 'users') {
-                return redirect('/dashboard');
+            if (Auth()->user()->role == 'aslab') {
+                return redirect('/dashboardaslab');
+            }else if (Auth()->user()->role == 'peserta') {
+                return redirect('/dashboardpeserta');
             }
         }else{
             return redirect('/')->with('status', 'password anda salah');
@@ -45,19 +45,22 @@ class AuthController extends Controller
     $request->validate([
             'nama_lengkap' => 'required',
             'email' => 'required|email',
+            'nim' => 'required|max:10',
             'password' => 'required|max:8'
     ]);
     if ($request->agreeterm == true) {
             $request->validate([
                 'nama_lengkap' => 'required',
                 'email' => 'required|email',
+                'nim' => 'required|max:10',
                 'password' => 'required|max:8'
             ]);
             if ($request->password == $request->password2) {
 
                 $user = new User;
-                $user->role = 'users';
+                $user->role = 'peserta';
                 $user->name = $request->nama_lengkap; // mengambil dari requst name="nama
+                $user->nim = $request->nim;
                 $user->email = $request->email;
                 $user->password = Hash::make($request->password);
                 $user->remember_token = Str::random(60);
@@ -66,7 +69,7 @@ class AuthController extends Controller
 
             $request->request->add(['user_id' => $user->id]);
            // Profile::create($request->all());
-                return redirect('/dashboard');
+                return redirect('/dashboardpeserta');
            // } else {
               //  return redirect('/register')->with('status', 'Password yang anda masukan tidak sama');
             }

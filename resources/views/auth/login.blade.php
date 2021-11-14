@@ -9,13 +9,13 @@
                     </div>
 
                     <div class="signin-form">
-                        <h2 class="form-title">Login User</h2>
+                        <h2 class="form-title">Login</h2>
 
                         <form method="POST" action="/postlogin" class="register-form" id="login-form">
                             @csrf
                             <div class="form-group">
                                 <label for="your_email"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="email" id="your_email" placeholder="Your Email"/ value="{{old('email')}}">
+                                <input type="text" name="email" id="your_email" placeholder="Email"/ value="{{old('email')}}">
                             </div>
                             @error('email')
                                 <div class="invalid-feedback mt-2" style="margin-top: -8%">{{ $message }}</div>

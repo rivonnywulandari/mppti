@@ -22,20 +22,20 @@
                 <div class="w-64 bg-blue-500 h-screen">
                     <div class="flex flex-col w-64 h-screen py-8 bg-white border-r dark:bg-gray-800 dark:border-gray-600">
                         
-                        {{-- Data Diri Akun --}}
+                    {{-- Data Diri Akun --}}
                         <div class="flex flex-col items-center mt-6 -mx-2">
                             <img class="object-cover w-24 h-24 mx-2 rounded-full" src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="avatar">
                             <h4 class="mx-2 mt-2 font-medium text-gray-800 dark:text-gray-200 hover:underline">{{ Auth::user()->name }}</h4>
                             <p class="mx-2 mt-1 text-sm font-medium text-gray-600 dark:text-gray-400 hover:underline">{{ Auth::user()->email }}</p>
-                            <div class="mt-2 border-2 px-2 rounded-full border-light-blue-500 border-opacity-100">
+                            <!-- <div class="mt-2 border-2 px-2 rounded-full border-light-blue-500 border-opacity-100">
                                <p class="font-medium text-gray-600 dark:text-gray-400 text-xs">status:</p>
-                            </div>
+                            </div> -->
                         </div>
                         
                         {{-- Navigasi Side Bar --}}
                         <div class="flex flex-col justify-between flex-1 mt-6">
                             <nav>
-                                <a class="flex items-center px-4 py-2 text-gray-700 bg-gray-200 dark:bg-gray-700 dark:text-gray-200" href="#">
+                            <a href="{{url('/dashboardpeserta')}}" class="flex items-center px-4 py-2 text-gray-700 transition-colors duration-200 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700" href="#">
                                     <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="img/home.png">
                                     <span class="mx-4 font-medium">Beranda</span>
                                 </a>
@@ -45,7 +45,7 @@
                                     <span class="mx-4 font-medium">Pendaftaran OR</span>
                                 </a>
                              
-                                <a href="{{url('/lihatnilai')}}" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700" href="#">
+                                <a href="{{url('/lihatnilai')}}" class="flex items-center px-4 py-2 mt-5 text-gray-600 bg-gray-200 dark:bg-gray-700 dark:text-gray-200" href="#">
                                     <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="img/grade.png">
                                     <span class="mx-4 font-medium">Lihat Nilai</span>
                                 </a>
@@ -64,6 +64,7 @@
                     </div>
                 </div>
 
+
                 {{-- Content Kanan --}}
                 <div class="w-full flex flex-col">
                     {{-- Header --}}
@@ -77,9 +78,83 @@
                     </div>
                    
                     {{-- Content Abu-Abu --}}
-                    <div class="content w-full bg-gray-100 h-full p-3">
+                    <div class="static content w-full bg-gray-100 h-full p-3">
                         {{-- Breadcrumbs --}}
                         @yield('breadcrumbs')
+                       <!-- This example requires Tailwind CSS v2.0+ -->
+ <div class="md:grid md:grid-cols-3 md:gap-6">
+    
+    <div class="mt-5 md:mt-0 md:col-span-2">
+      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Nama
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Indikator
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Nilai
+              </th>
+           
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            <tr>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 h-10 w-10">
+                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                  </div>
+                  <div class="ml-4">
+                    <div class="text-sm font-medium text-gray-900">
+                      Jane Cooper
+                    </div>
+                    <div class="text-sm text-gray-500">
+                      jane.cooper@example.com
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-900">Tahap Awal:</div>
+                <div class="text-sm text-gray-500">Berkas</div>
+                <div class="text-sm text-gray-500">Wawancara</div>
+                <div class="text-sm text-gray-500">Test</div>
+
+                <br>
+                <div class="text-sm text-gray-900">Tahap Akhir:</div>
+                <div class="text-sm text-gray-500">Tugas Upgrading</div>
+                <div class="text-sm text-gray-500">Tugas Final</div>
+                <div class="text-sm text-gray-500">Sikap</div>
+
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-900">-</div>
+                <div class="text-sm text-gray-500">90</div>
+                <div class="text-sm text-gray-500">90</div>
+                <div class="text-sm text-gray-500">90</div>
+                
+                <br>
+                <div class="text-sm text-gray-900">-</div>
+                <div class="text-sm text-gray-500">90</div>
+                <div class="text-sm text-gray-500">90</div>
+                <div class="text-sm text-gray-500">90</div>
+              </td>
+           
+             
+                  
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
+
+
 
                         {{-- Isi content --}}
                         @yield('content')

@@ -5,20 +5,27 @@
             <div class="container">
                 <div class="signup-content">
                     <div class="signup-form">
-                        <h2 class="form-title">Sign up</h2>
+                        <h2 class="form-title">Sign Up</h2>
                         <form method="POST" action="/postregister" class="register-form" id="register-form">
                             @csrf
                             <input type="hidden" class="hidden" value="user" name="role" >
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="nama_lengkap" id="nama_lengkap" placeholder="Your Name"/ value="{{old('nama_lengkap')}}">
+                                <input type="text" name="nama_lengkap" id="nama_lengkap" placeholder="Nama Lengkap"/ value="{{old('nama_lengkap')}}">
+                            </div>
+                            @error('nama_lengkap')
+                                <div class="invalid-feedback mt-2" style="margin-top: -8%">{{ $message }}</div>
+                            @enderror
+                            <div class="form-group">
+                                <label for="nim"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="nim" id="nim" placeholder="NIM"/ value="{{old('nim')}}">
                             </div>
                             @error('nama_lengkap')
                                 <div class="invalid-feedback mt-2" style="margin-top: -8%">{{ $message }}</div>
                             @enderror
                             <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                <input type="email" name="email" id="email" placeholder="Your Email"/ value="{{old('email')}}">
+                                <input type="email" name="email" id="email" placeholder="Email"/ value="{{old('email')}}">
 
                             </div>
                             @error('email')
@@ -38,7 +45,7 @@
                             @endif
                             <div class="form-group">
                                 <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" name="password2" id="re_pass" placeholder="Repeat your password"/>
+                                <input type="password" name="password2" id="re_pass" placeholder="Confirm password"/>
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="agreeterm" id="agree-term" class="agree-term" />
@@ -56,7 +63,7 @@
                     </div>
                     <div class="signup-image">
                         <figure><img src="{{asset('Admin/images/register.png')}}" alt="sing up image"></figure>
-                        <a href="/" class="signup-image-link">I am already member</a>
+                        <a href="/" class="signup-image-link">Sudah Punya Akun</a>
                     </div>
                 </div>
             </div>
