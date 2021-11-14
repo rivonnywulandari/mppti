@@ -16,7 +16,6 @@
 
     <div class="col-md-3 ml-md-5 col-sm-12 bg-white p-4" style="height:120px !important">
         <div class="form-group">
-            <label>Upload</label>
             <input type="submit" class="form-control btn btn-primary" value="Upload">
         </div>
     </div>

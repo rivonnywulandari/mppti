@@ -15,7 +15,7 @@ class InformasiController extends Controller
     public function index()
     {
         $informasi = DB::table('informasi')->orderby('id', 'desc')->get();
-        return view('aslab.informasi', ['informasi'=>$informasi]);
+        return view('aslab.dashboardaslab', ['info'=>$informasi]);
     }
     public function add_process(Request $informasi)
     {
