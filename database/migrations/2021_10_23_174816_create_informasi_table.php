@@ -17,7 +17,12 @@ class CreateInformasiTable extends Migration
             $table->id();
             $table->string('judul');
             $table->text('isi');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->integer('id_users')->nullable($value=false);
+            $table->foreign('id_users')->references('id')->on('users')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
+            $table->string('tujuan_informasi');
         });
     }
 

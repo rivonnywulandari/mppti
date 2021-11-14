@@ -16,9 +16,6 @@ class CreateJenisseleksiTable extends Migration
         Schema::create('jenisseleksi', function (Blueprint $table) {
             $table->id();
             $table->string('nama_seleksi');
-            $table->foreignId('id_informasi')->constrained('informasi')
-                    ->onUpdate('cascade')
-                    ->onDelete('cascade');
         });
     }
 
