@@ -64,6 +64,7 @@ Route::get('/seleksi', [JenisSeleksiController::class, 'index']); //daftar selek
 Route::post('/tambah_seleksi', [JenisSeleksiController::class, 'add_process']); //proses menambah seleksi
 Route::get('/seleksi_edit', [JenisSeleksiController::class, 'index_edit']);
 
+
 use App\Http\Controllers\SeleksiController;
 Route::post('/input_nilai', [SeleksiController::class, 'input_nilai']); //input nilai
 Route::get('/daftarnilai/{ids}', [SeleksiController::class, 'index']); //melihat daftar nilai peserta pada salah satu tahap
@@ -72,6 +73,7 @@ Route::get('/menupenilaian', [SeleksiController::class, 'menu']); //halaman menu
 Route::get('/daftarnilai_edit/{ids}', [SeleksiController::class, 'index_edit']);
 Route::get('/edit_nilai/{id}/{ids}', [SeleksiController::class, 'tampil_edit']);
 Route::post('/edit_nilai_process', [SeleksiController::class, 'edit_nilai_process']);
+Route::get('/destroy/{id}', [SeleksiController::class, 'destroy']);
 
 use App\Http\Controllers\InformasiController;
 // Route::get('/dashboardaslab', [InformasiController::class, 'index']);
@@ -81,6 +83,11 @@ Route::get('/edit/{id}', [InformasiController::class, 'edit']);
 Route::post('/edit_process', [InformasiController::class, 'edit_process']);
 Route::get('/delete/{id}', [InformasiController::class, 'destroy']);
 
+use App\Http\Controllers\DataPesertaController;
+Route::get('/daftar_peserta', [DataPesertaController::class, 'index']);
+Route::get('/detail_data/{id}', [DataPesertaController::class, 'detail_data']);
+Route::get('/edit/{id}', [DataPesertaController::class, 'edit']);
+Route::post('/edit_status', [DataPesertaController::class, 'edit_status']);
 
 
 Route::get('/dashboardaslab', [InformasiController::class, 'index'])

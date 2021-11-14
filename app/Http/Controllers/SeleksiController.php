@@ -140,6 +140,8 @@ class SeleksiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('jenisseleksi')->where('id', $id)
+                            ->delete();
+        return redirect()->action([SeleksiController::class, 'menu']);
     }
 }

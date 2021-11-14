@@ -26,4 +26,10 @@ class JenisSeleksiController extends Controller
         $tahap = DB::table('jenisseleksi')->orderby('id', 'desc')->get();
         return view('aslab.seleksi_edit', ['tahap'=>$tahap]);
     }
+    public function destroy($id)
+    {
+        DB::table('jenisseleksi')->where('id', $id)
+                            ->delete();
+        return redirect()->action([SeleksiController::class, 'menu']);
+    }
 }
