@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Seleksi;
 use App\Models\JenisSeleksi;
+use App\Models\Daftar;
 
 class SeleksiController extends Controller
 {
@@ -19,13 +20,18 @@ class SeleksiController extends Controller
     {
         $jenis = DB::table('jenisseleksi')->where('id', $ids)->first();
         $user = Seleksi::select('id_users')->where('id_seleksi', $ids)->get()->toArray();
-        $users = User::select('id', 'name')->whereNotIn('id', $user)->orderby('id', 'desc')->get();
+        $users = Daftar::join('users', 'daftar.id', '=', 'users.id')
+                ->select('users.name', 'daftar.id')
+                ->whereNotIn('daftar.id', $user)
+                ->orderby('daftar.id', 'desc')
+                ->get();
         return view('aslab.detailnilai', ['user'=>$users], ['jenis'=>$jenis]);
     }
     public function index_edit($id)
     {
         $jenis = DB::table('jenisseleksi')->where('id', $id)->first();
         $user = DB::table('seleksi')->orderby('seleksi.id_users', 'desc')
+                    ->join('daftar', 'daftar.id', '=', 'seleksi.id_users')
                     ->join('users', 'users.id', '=', 'seleksi.id_users')
                     ->where('id_seleksi', $id)
                     ->get();
@@ -33,7 +39,10 @@ class SeleksiController extends Controller
     }
     public function tampil_input($id,$ids)
     {
-        $tampil = DB::table('users')->where('id', $id)->first();
+        $tampil = DB::table('daftar')->where('daftar.id', $id)
+                    ->join('users', 'daftar.id', '=', 'users.id')
+                    ->select('users.name','daftar.id')
+                    ->first();
         $jenis  = DB::table('jenisseleksi')->where('id', $ids)->first();
         return view('aslab.inputNilai', ['tampil'=>$tampil], ['jenis'=>$jenis]);
     }
@@ -59,10 +68,14 @@ class SeleksiController extends Controller
     public function tampil_edit($id,$ids)
     {
         $nilai = DB::table('seleksi')
+                ->join('users', 'users.id', '=', 'seleksi.id_users')
                 ->where('id_seleksi', $ids)
                 ->Where('id_users', $id)
                 ->first();
-        $users = DB::table('users')->where('id', $id)->first();
+        $users = DB::table('daftar')
+                ->join('users', 'users.id', '=', 'daftar.id')
+                ->where('daftar.id', $id)
+                ->first();
         return view('aslab.editNilai', ['nilai'=>$nilai], ['user'=>$users]);
     }
     public function edit_nilai_process(Request $seleksi)

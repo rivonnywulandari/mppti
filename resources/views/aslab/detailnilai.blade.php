@@ -17,7 +17,7 @@
                         <td>{{ ++$i }}</td>
                         <td>{{ $user->name }}</td>
                         <td>
-                            <a href="/input/{{ $user->id }}/{{ $jenis->id }}"<button class="btn btn-primary">Input</button></a>
+                            <a href="/input/{{ $user->id }}/{{ $jenis->id }}"><button class="btn btn-primary">Input</button></a>
                         </td>
                     </tr>
                 @endforeach
