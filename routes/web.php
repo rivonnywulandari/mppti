@@ -29,6 +29,10 @@ Route::get('/dashboardaslab', function () {
     return view('aslab.dashboardaslab');
 })->middleware(['auth'])->name('aslab.dashboardaslab');
 
+Route::get('/dashboardkalab', function () {
+    return view('kalab.dashboardkalab');
+})->middleware(['auth'])->name('kalab.dashboardkalab');
+
 Route::get('/dashboardpeserta', function () {
     return view('peserta.dashboardpeserta');
 })->middleware(['auth'])->name('peserta.dashboardpeserta');
@@ -92,5 +96,11 @@ Route::post('/edit_status', [DataPesertaController::class, 'edit_status']);
 
 Route::get('/dashboardaslab', [InformasiController::class, 'index'])
         ->middleware(['auth'])->name('aslab.dashboardaslab');
+
+use App\Http\Controllers\KalabController;
+Route::get('/dashboardkalab', [KalabController::class, 'index'])
+        ->middleware(['auth'])->name('kalab.dashboardkalab');
+Route::get('/daftartahap', [KalabController::class, 'tahap']);
+Route::get('/daftarnilaipeserta/{ids}', [KalabController::class, 'nilai_peserta']);
 
 require __DIR__.'/auth.php';
