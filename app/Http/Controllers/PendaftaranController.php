@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Daftar;
 use App\Models\User;
-
+use App\Models\Seleksi;
+use App\Models\JenisSeleksi;
 use Storage;
 use PDF;
 use Auth;
@@ -57,6 +58,34 @@ class PendaftaranController extends Controller
        
         // return view('peserta.lihatpendaftaran');
     }
+
+    public function nilai()
+    {
+        // $data_nilai = DB::table('seleksi')
+        // ->join ('jenisseleksi',  'jenisseleksi.id', '=', 'seleksi.id_seleksi')
+        // -> join ('users',  'users.id', '=', 'seleksi.id_users')
+        // ->select('jenisseleksi.id','jenisseleksi.nama_seleksi', 'seleksi.nilai')        
+        // ->where('seleksi.id_users', '=', Auth::user()->id)      
+        // ->get();
+        // return view('peserta.lihatnilai', compact('data_nilai'));
+
+        $data_nilai = DB::table('users')
+        -> join ('seleksi',  'seleksi.id_users', '=', 'users.id')
+        ->join ('jenisseleksi',  'jenisseleksi.id', '=', 'seleksi.id_seleksi')
+        ->select('jenisseleksi.id','jenisseleksi.nama_seleksi', 'seleksi.nilai')        
+        ->where('users.id', '=', Auth::user()->id)      
+        ->get();
+        return view('peserta.lihatnilai', compact('data_nilai'));
+
+        // $data_user = DB::table('users') 
+        // -> join ('daftar',  'daftar.id', '=', 'users.id')
+        // ->select('users.id','users.name','users.nim', 'users.email', 'daftar.status')        
+        // ->where('users.id', '=', Auth::user()->id)         
+        // ->get();
+        // return view('peserta.lihatnilai', compact('data_user'));
+
+    }
+
 
 
     /**

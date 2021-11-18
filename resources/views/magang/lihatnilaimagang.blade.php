@@ -35,22 +35,18 @@
                         {{-- Navigasi Side Bar --}}
                         <div class="flex flex-col justify-between flex-1 mt-6">
                             <nav>
-                            <a href="{{url('/dashboardpeserta')}}" class="flex items-center px-4 py-2 text-gray-700 transition-colors duration-200 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700" href="#">
+                                <a href="{{url('/dashboardmagang')}}" class="flex items-center px-4 py-2 text-gray-700 bg-gray-200 dark:bg-gray-700 dark:text-gray-200" href="#">
                                     <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="img/home.png">
                                     <span class="mx-4 font-medium">Beranda</span>
                                 </a>
                              
-                                <a href="{{url('/pendaftaranor')}}" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700" href="#">
-                                    <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="img/document.png">
-                                    <span class="mx-4 font-medium">Pendaftaran OR</span>
-                                </a>
-                             
-                                <a href="{{url('/lihatnilai')}}" class="flex items-center px-4 py-2 mt-5 text-gray-600 bg-gray-200 dark:bg-gray-700 dark:text-gray-200" href="#">
+                                                    
+                                <a href="{{url('/lihatnilaimagang')}}" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700" href="#">
                                     <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="img/grade.png">
                                     <span class="mx-4 font-medium">Lihat Nilai</span>
                                 </a>
                              
-                                <a href="{{url('/pengaturan')}}" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700" href="#">
+                                <a href="{{url('/pengaturanmagang')}}" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700" href="#">
                                     <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="img/setting.png">
                                     <span class="mx-4 font-medium">Pengaturan</span>
                                 </a>
@@ -63,7 +59,6 @@
                         </div>
                     </div>
                 </div>
-
 
                 {{-- Content Kanan --}}
                 <div class="w-full flex flex-col">

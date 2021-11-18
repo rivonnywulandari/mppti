@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PendaftaranController;
+use App\Http\Controllers\PesertaController;
+use App\Http\Controllers\MagangController;
 use App\Http\Controllers\PengaturanController;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,6 +39,10 @@ Route::get('/dashboardpeserta', function () {
     return view('peserta.dashboardpeserta');
 })->middleware(['auth'])->name('peserta.dashboardpeserta');
 
+
+Route::get('/dashboardpeserta', [PesertaController::class, 'index'])
+        ->middleware(['auth'])->name('peserta.dashboardpeserta');
+
 // untuk peserta
 Route::get('/pendaftaranor', [PendaftaranController::class, 'index']);
 Route::get('/pendaftaran/create', [PendaftaranController::class, 'create']); //simpan pendaftaran
@@ -45,7 +51,7 @@ Route::post('/pendaftaran/{id}/store', [PendaftaranController::class, 'store'])-
 
 
 // Route::get('/daftar', [PendaftaranController::class, 'daftar']);
-Route::get('/lihatnilai', [PendaftaranController::class, 'lihatnilai']);
+Route::get('/lihatnilai', [PendaftaranController::class, 'nilai']);
 Route::get('/lihatpendaftaran', [PendaftaranController::class, 'lihatpendaftaran']);
 Route::post('/lihatpendaftaran/{filezip}/download', [PendaftaranController::class, 'download'])->name('download.pendaftaran');
 Route::get('/pengaturan', [PengaturanController::class, 'index']);
@@ -53,7 +59,15 @@ Route::get('/gantipassword', [PengaturanController::class, 'gantipassword']);
 Route::post('/pengaturan/{id}/update', [PengaturanController::class, 'update'])->name('reset'); //tambah pendaftaran
 Route::post('/gantipassword/{id}/updatepass', [PengaturanController::class, 'updatepass'])->name('resett'); //tambah pendaftaran
 
+//untuk magang
+Route::get('/dashboardmagang', [MagangController::class, 'index'])
+        ->middleware(['auth'])->name('magang.dashboardmagang');
 
+Route::get('/lihatnilaimagang', [MagangController::class, 'nilai']);
+Route::get('/pengaturanmagang', [MagangController::class, 'indexmagang']);
+Route::get('/gantipasswordmagang', [MagangController::class, 'gantipasswordmagang']);
+Route::post('/pengaturanmagang/{id}/update', [MagangController::class, 'updatemagang'])->name('resetmagang'); //tambah pendaftaran
+Route::post('/gantipasswordmagang/{id}/updatepass', [MagangController::class, 'updatepassmagang'])->name('resettmagang'); //tambah pendaftaran
 
 
 Route::get('/addinfo', function () {

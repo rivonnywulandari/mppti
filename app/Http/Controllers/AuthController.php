@@ -31,6 +31,8 @@ class AuthController extends Controller
                 return redirect('/dashboardaslab');
             }else if (Auth()->user()->role == 'peserta') {
                 return redirect('/dashboardpeserta');
+            }else if (Auth()->user()->role == 'magang') {
+                return redirect('/dashboardmagang');
             }else if (Auth()->user()->role == 'kalab') {
                 return redirect('/dashboardkalab');
             }

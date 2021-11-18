@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class PesertaController extends Controller
 {
@@ -13,9 +15,14 @@ class PesertaController extends Controller
      */
     public function index()
     {
-        
+        $informasi = DB::table('informasi')
+        ->orderby('id', 'desc')
+        ->where('informasi.tujuan_informasi', '=', 'umum') 
+        ->get();
+        return view('peserta.dashboardpeserta', ['info'=>$informasi]);
     }
 
+    
     /**
      * Show the form for creating a new resource.
      *

@@ -34,6 +34,8 @@ class DataPesertaController extends Controller
         $status = $status->status;
         DB::table('daftar')->where('id', $id)
                             ->update(['status' => $status]);
+        DB::table('users')->where('id', $id)
+                            ->update(['role' => $status]);
         return redirect()->action([DataPesertaController::class, 'index']);
     }
 }
