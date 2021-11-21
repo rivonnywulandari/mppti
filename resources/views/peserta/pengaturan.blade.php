@@ -36,27 +36,27 @@
                         <div class="flex flex-col justify-between flex-1 mt-6">
                             <nav>
                             <a href="{{url('/dashboardpeserta')}}"class="flex items-center px-4 py-2 text-gray-700 transition-colors duration-200 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700" href="#">
-                                    <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="img/home.png">
+                                    <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="/img/home.png">
                                     <span class="mx-4 font-medium">Beranda</span>
                                 </a>
                              
                                 <a href="{{url('/pendaftaranor')}}"  class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700" href="#">
-                                    <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="img/document.png">
+                                    <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="/img/document.png">
                                     <span class="mx-4 font-medium">Pendaftaran OR</span>
                                 </a>
                              
                                 <a href="{{url('/lihatnilai')}}"  class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700" href="#">
-                                    <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="img/grade.png">
+                                    <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="/img/grade.png">
                                     <span class="mx-4 font-medium">Lihat Nilai</span>
                                 </a>
                              
                                 <a href="{{url('/pengaturan')}}" class="flex items-center px-4 py-2 mt-5 text-gray-600 bg-gray-200 dark:bg-gray-700 dark:text-gray-200" href="#">
-                                    <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="img/setting.png">
+                                    <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="/img/setting.png">
                                     <span class="mx-4 font-medium">Pengaturan</span>
                                 </a>
 
                                 <a href="{{url('/logout')}}" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700" href="#">
-                                    <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="img/logout.png">
+                                    <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="/img/logout.png">
                                     <span class="mx-4 font-medium">Logout</span>
                                 </a>
                              </nav>
@@ -73,7 +73,7 @@
                             <p class="mt-1 white-color font-bold">Sistem Informasi OR Laboratory of Business Intelligence</p>
                         </div>
                         <div class="justify-self-end">
-                            <img class="w-8"src="img/logo.png" alt="logo-lbi"></p>
+                            <img class="w-8"src="/img/logo.png" alt="logo-lbi"></p>
                         </div>
                     </div>
                    
@@ -125,25 +125,7 @@
                </div>
 
                @endforeach
-               <!-- <div class="col-span-6 sm:col-span-4">
-                 <label class="block text-sm font-medium text-gray-700">Ganti Password?</label>
-               </div>
                
-               <div class="col-span-6 sm:col-span-4">
-                 <label for="password" class="block text-sm font-medium text-gray-700">Password Lama</label>
-                 <input type="password" name="password" id="password" autocomplete="password" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-               </div>
-               
-               <div class="col-span-6 sm:col-span-4">
-                 <label for="passswordbaru" class="block text-sm font-medium text-gray-700">Passsword Baru</label>
-                 <input type="password" name="passswordbaru" id="passswordbaru" autocomplete="passswordbaru" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-               </div>
-
-               <div class="col-span-6 sm:col-span-4">
-                 <label for="konfirmasipasswordbaru" class="block text-sm font-medium text-gray-700">Konfirmasi Passsword Baru</label>
-                 <input type="password" name="konfirmasipasswordbaru" id="konfirmasipasswordbaru" autocomplete="konfirmasipasswordbaru" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-               </div> -->
- 
                </div>
            </div>
            <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
