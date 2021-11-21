@@ -22,7 +22,13 @@ class PesertaController extends Controller
         return view('peserta.dashboardpeserta', ['info'=>$informasi]);
     }
 
-    
+    public function detaildpeserta($id)
+    {
+        $informasi = DB::table('informasi')->where('id', $id)->first();
+        return view('peserta.detaildpeserta', ['informasi'=>$informasi]);
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *

@@ -36,27 +36,27 @@
                         <div class="flex flex-col justify-between flex-1 mt-6">
                             <nav>
                                 <a href="{{url('/dashboardpeserta')}}" class="flex items-center px-4 py-2 text-gray-700 bg-gray-200 dark:bg-gray-700 dark:text-gray-200" href="#">
-                                    <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="img/home.png">
+                                    <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="/img/home.png">
                                     <span class="mx-4 font-medium">Beranda</span>
                                 </a>
                              
                                 <a href="{{url('/pendaftaranor')}}" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700" href="#">
-                                    <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="img/document.png">
+                                    <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="/img/document.png">
                                     <span class="mx-4 font-medium">Pendaftaran OR</span>
                                 </a>
                              
                                 <a href="{{url('/lihatnilai')}}" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700" href="#">
-                                    <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="img/grade.png">
+                                    <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="/img/grade.png">
                                     <span class="mx-4 font-medium">Lihat Nilai</span>
                                 </a>
                              
                                 <a href="{{url('/pengaturan')}}" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700" href="#">
-                                    <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="img/setting.png">
+                                    <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="/img/setting.png">
                                     <span class="mx-4 font-medium">Pengaturan</span>
                                 </a>
 
                                 <a href="{{url('/logout')}}" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700" href="#">
-                                    <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="img/logout.png">
+                                    <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="/img/logout.png">
                                     <span class="mx-4 font-medium">Logout</span>
                                 </a>
                              </nav>
@@ -72,7 +72,7 @@
                             <p class="mt-1 white-color font-bold">Sistem Informasi OR Laboratory of Business Intelligence</p>
                         </div>
                         <div class="justify-self-end">
-                            <img class="w-8"src="img/logo.png" alt="logo-lbi"></p>
+                            <img class="w-8"src="/img/logo.png" alt="logo-lbi" ></p>
                         </div>
                     </div>
                    
@@ -96,42 +96,19 @@
   }
   ```
 -->
-        <div class="px-4 py-5 bg-white sm:p-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
-              <b>Informasi Seputar Open Recruitment LBI</b>
-            </h3><hr style="height:20px"">
-        
-            <div class="px-3 py-4 flex justify-center">
-                <table class="w-full text-md bg-white shadow-md rounded mb-4 border">
-                    <thead>
-                        <tr class="border">
-                            <th class="text-left p-3 px-5">No.</th>
-                            <th class="text-left p-3 px-5">Judul</th>
-                            <th class="text-left p-3 px-5">Isi</th>
-                            <th class="text-left p-3 px-5">Tanggal Posting</th>
-                            <th width="15%">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                            @forelse ($info as $i => $info)
-                                <tr class="border-b hover:bg-gray-100">
-                                    <td class="p-3 px-5">{{ ++$i }}</td>
-                                    <td class="p-3 px-5">{{ $info->judul }}</td>
-                                    <td class="p-3 px-5">{{ $info->isi }}</td>
-                                    <td class="p-3 px-5">{{ $info->created_at }}</td>
-                                    <td class="p-3 px-5 flex justify-end">
-                                        <a href="/detaildpeserta/{{ $info->id }}"><button class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Detail</a>
-                                    </td>
-                                </tr>
-                            @empty
-                            <tr class="border-b hover:bg-gray-100">
-                                <td colspan="5"><center><p class="text-sm text-gray-500">Informasi Tidak Tersedia</p></center></td>
-                            </tr>
-                            @endforelse
-                    </tbody>
-                </table>
-            </div>
+<div class="px-4 py-5 bg-white sm:p-6"> 
+    <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+    <b>Detail Informasi</b>
+    </h3><hr>
+
+    <div class="col-md-7 col-sm-12 mb-5 bg-white p-0">
+        <div class="p-4">
+            <h2>{{ $informasi->judul }}</h2>
+            <p class="mt-5">{{ $informasi->isi }}</p>
+        </div>
     </div>
+    <a href="/dashboardpeserta"><button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Kembali</button></a>
+</div>
 
 
 

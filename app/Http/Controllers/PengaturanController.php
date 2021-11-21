@@ -114,7 +114,7 @@ class PengaturanController extends Controller
             $user->save();
 
 
-            return redirect('/dashboardpeserta')->with('status', 'Data Akun Berhasil Diubah');
+            return redirect('/pengaturan')->with('status', 'Data Akun Berhasil Diubah');
         }
     }
 

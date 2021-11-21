@@ -35,7 +35,7 @@
                         {{-- Navigasi Side Bar --}}
                         <div class="flex flex-col justify-between flex-1 mt-6">
                             <nav>
-                            <a href="{{url('/dashboard')}}"class="flex items-center px-4 py-2 text-gray-700 transition-colors duration-200 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700" href="#">
+                            <a href="{{url('/dashboardpeserta')}}"class="flex items-center px-4 py-2 text-gray-700 transition-colors duration-200 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700" href="#">
                                     <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" img src="{{asset("img/home.png")}}">
 
 
@@ -147,6 +147,11 @@
                                     <div class="col-span-6 sm:col-span-2">
                                       <label for="tanggal_lahir" class="block text-sm font-medium text-gray-700">Tanggal Lahir</label>
                                       <input type="date" name="tanggal_lahir" id="tanggal_lahir" autocomplete="tanggal_lahir" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+
+                                    <div class="col-span-6 sm:col-span-6 lg:col-span-4" hidden>
+                                      <label for="tahun_daftar" class="block text-sm font-medium text-gray-700">Tahun Daftar</label>
+                                      <input type="text" name="tahun_daftar" id="tahun_daftar" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
 
                                     <div class="col-span-6 sm:col-span-6 lg:col-span-4">

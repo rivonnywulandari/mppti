@@ -57,6 +57,9 @@ Route::get('/pengaturan', [PengaturanController::class, 'index']);
 Route::get('/gantipassword', [PengaturanController::class, 'gantipassword']);
 Route::post('/pengaturan/{id}/update', [PengaturanController::class, 'update'])->name('reset'); //tambah pendaftaran
 Route::post('/gantipassword/{id}/updatepass', [PengaturanController::class, 'updatepass'])->name('resett'); //tambah pendaftaran
+Route::get('/detaildpeserta/{id}', [PesertaController::class, 'detaildpeserta']);
+
+
 
 //untuk magang
 Route::get('/dashboardmagang', [MagangController::class, 'index'])

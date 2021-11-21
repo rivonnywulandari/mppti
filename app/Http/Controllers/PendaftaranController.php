@@ -44,7 +44,7 @@ class PendaftaranController extends Controller
     {
         $data_pendaftar = DB::table('daftar') 
         ->join ('users',  'users.id', '=', 'daftar.id')
-        ->select('users.id','users.name','users.nim', 'users.email', 'daftar.status', 'daftar.jenis_kelamin', 'daftar.tempat_lahir','daftar.tanggal_lahir', 'daftar.asal', 'daftar.alamat', 'daftar.alasan', 'daftar.kontribusi', 'daftar.kenapa', 'daftar.apakah', 'daftar.bersediakah', 'daftar.filezip')        
+        ->select('users.id','users.name','users.nim', 'users.email', 'daftar.status', 'daftar.jenis_kelamin', 'daftar.tempat_lahir','daftar.tanggal_lahir', 'daftar.tahun_daftar', 'daftar.asal', 'daftar.alamat', 'daftar.alasan', 'daftar.kontribusi', 'daftar.kenapa', 'daftar.apakah', 'daftar.bersediakah', 'daftar.filezip')        
         ->orderByDesc('daftar_id')
         ->limit(1)
         ->where('daftar.id', '=', Auth::user()->id)         
@@ -91,15 +91,24 @@ class PendaftaranController extends Controller
      */
     public function store(Request $request, $id)
     {
-
+        
         $request->validate([
     		'jenis_kelamin'=>'required',
     		'tempat_lahir'=>'required',
     		'tanggal_lahir'=>'required',
     		'alamat'=>'required'
     	]);
-        
-       	$user = User::findOrFail($id);
+
+        $user = User::where('id', $id)->first();
+
+
+        if ($user->daftar) {
+        return redirect('/pendaftaranor')->with('gagal', 'Anda telah melakukan pendaftaran sebelumnya');
+       
+        }
+        else{             
+
+        $user = User::findOrFail($id);
         $daftar = new Daftar(); 
         $daftar->id = $user->id;
         $daftar->jenis_kelamin = $request->jenis_kelamin;
@@ -117,7 +126,9 @@ class PendaftaranController extends Controller
         $daftar->status = "diproses";
         $daftar->save();
 
-    	return redirect('/pendaftaranor')->with('status', 'Berhasil Melakukan Pendaftaran');
+    	return redirect('/pendaftaranor')->with('sukses', 'Berhasil Melakukan Pendaftaran');
+        }
+
     }
 
     public function download($filezip)

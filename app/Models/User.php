@@ -52,7 +52,7 @@ class User extends Authenticatable
 
     public function daftar()
     {
-        return $this->hasMany(Daftar::class,'id');
+        return $this->hasOne(Daftar::class,'id');
     }
 
     

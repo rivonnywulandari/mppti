@@ -146,6 +146,11 @@
               </div>
 
               <div class="col-span-6 sm:col-span-6 lg:col-span-4">
+                <label for="tahun_daftar" class="block text-sm font-medium text-gray-700">Tahun Daftar</label>
+                <input type="text" name="tahun_daftar" id="tahun_daftar" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" value="{{ $data_pendaftar->tahun_daftar }}"readonly>
+               </div>
+
+              <div class="col-span-6 sm:col-span-6 lg:col-span-4">
                 <label for="asal" class="block text-sm font-medium text-gray-700">Asal</label>
                 <input type="text" name="asal" id="asal" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" value="{{ $data_pendaftar->asal }}"readonly>
               </div>

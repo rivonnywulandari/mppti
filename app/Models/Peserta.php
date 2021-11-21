@@ -11,4 +11,6 @@ class Peserta extends Model
     protected $table='peserta';
     protected $fillable = ['nim', 'nama', 'id_users', 'tgl_lahir'];
     public $timestamps = false; 
+
+
 }
