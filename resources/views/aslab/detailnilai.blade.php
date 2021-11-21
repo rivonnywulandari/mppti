@@ -16,7 +16,7 @@
         <span class="mx-4 font-medium">Kelola Nilai</span>
     </a>
 
-    <a class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700" href="#">
+    <a class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700" href="/pengaturanaslab">
         <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="img/setting.png">
         <span class="mx-4 font-medium">Pengaturan</span>
     </a>
@@ -31,7 +31,7 @@
 <div class="px-4 py-5 bg-white sm:p-6"> 
     <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
         {{-- //Ini namanya sesuai nama tahapan --}}
-    <b>Input Nilai Tahapan</b>
+    <b>Input Nilai Tahapan {{$jenis->nama_seleksi}}</b>
     </h3><hr>
 
     <div class="px-3 py-4 flex justify-center">

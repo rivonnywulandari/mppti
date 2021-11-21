@@ -39,10 +39,7 @@ class SeleksiController extends Controller
     }
     public function tampil_input($id,$ids)
     {
-        $tampil = DB::table('daftar')->where('daftar.id', $id)
-                    ->join('users', 'daftar.id', '=', 'users.id')
-                    ->select('users.name','daftar.id')
-                    ->first();
+        $tampil = DB::table('users')->where('id', $id)->first();
         $jenis  = DB::table('jenisseleksi')->where('id', $ids)->first();
         return view('aslab.inputNilai', ['tampil'=>$tampil], ['jenis'=>$jenis]);
     }
@@ -72,9 +69,8 @@ class SeleksiController extends Controller
                 ->where('id_seleksi', $ids)
                 ->Where('id_users', $id)
                 ->first();
-        $users = DB::table('daftar')
-                ->join('users', 'users.id', '=', 'daftar.id')
-                ->where('daftar.id', $id)
+        $users = DB::table('users')
+                ->where('id', $id)
                 ->first();
         return view('aslab.editNilai', ['nilai'=>$nilai], ['user'=>$users]);
     }

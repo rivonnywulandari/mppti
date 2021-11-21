@@ -20,8 +20,9 @@ class CreateSeleksiTable extends Migration
             //         ->onDelete('cascade');
 
             $table->integer('id_users')->nullable($value=false);
-            $table->foreign('id_users')->references('id')->on('daftar');
-
+            $table->foreign('id_users')->references('id')->on('daftar')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
             $table->foreignId('id_seleksi')->constrained('jenisseleksi')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');

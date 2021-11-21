@@ -16,7 +16,7 @@
         <span class="mx-4 font-medium">Kelola Nilai</span>
     </a>
 
-    <a class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700" href="#">
+    <a class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700" href="/pengaturanaslab">
         <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="img/setting.png">
         <span class="mx-4 font-medium">Pengaturan</span>
     </a>
@@ -35,7 +35,7 @@
           <div class="px-4 py-5 bg-white col-md-12 sm:p-6">
           <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
               <b>Detail Informasi Peserta</b>
-            </h3><hr style="height:20px"">
+            </h3><hr style="height:20px">
             <div class="grid grid-cols-6 gap-6">
     
               <div class="col-span-6 sm:col-span-4">
@@ -65,28 +65,33 @@
 
               <div class="col-span-6 sm:col-span-4">
                 <label for="status" class="block text-sm font-medium text-gray-700">Status Peserta</label>
-                <select id="status" name="status" autocomplete="jenis_kelamin" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                    @if($detail->status == "diproses")
-                    <option value="diproses" selected>Diproses</option>
-                    <option value="magang">Magang</option>
-                    <option value="aslab">Aslab</option>
-                    @elseif($detail->status == "magang")
-                    <option value="diproses">Diproses</option>
-                    <option value="magang" selected>Magang</option>
-                    <option value="aslab">Aslab</option>
-                    @else
-                    <option value="diproses">Diproses</option>
-                    <option value="magang">Magang</option>
-                    <option value="aslab" selected>Aslab</option> 
-                    @endif
-                  </select>
+                <form method="post" action="/edit_status/{{ $detail->id }}">
+                  @csrf
+                  <select id="status" name="status" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                      @if($detail->status == "diproses")
+                      <option value="diproses" selected>Diproses</option>
+                      <option value="magang">Magang</option>
+                      <option value="admin">Aslab</option>
+                      @elseif($detail->status == "magang")
+                      <option value="diproses">Diproses</option>
+                      <option value="magang" selected>Magang</option>
+                      <option value="admin">Aslab</option>
+                      @else
+                      <option value="diproses">Diproses</option>
+                      <option value="magang">Magang</option>
+                      <option value="admin" selected>Aslab</option> 
+                      @endif
+                    </select>
+                  <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                    <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                      Edit
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
       </div>
       <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-        <a href="/edit/{{ $detail->id }}"><button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-           Edit
-          </button></a>
       </div>
     </div>
   </form>

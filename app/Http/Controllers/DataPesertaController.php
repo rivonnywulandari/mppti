@@ -28,13 +28,12 @@ class DataPesertaController extends Controller
                     ->first();
         return view('aslab.editStatus', ['informasi'=>$informasi]);
     }
-    public function edit_status(Request $status)
+    public function edit_status(Request $status, $idp)
     {
-        $id = $status->id;
-        $status = $status->status;
-        DB::table('daftar')->where('id', $id)
+        $status  = $status->status;
+        DB::table('daftar')->where('id', $idp)
                             ->update(['status' => $status]);
-        DB::table('users')->where('id', $id)
+        DB::table('users')->where('id', $idp)
                             ->update(['role' => $status]);
         return redirect()->action([DataPesertaController::class, 'index']);
     }

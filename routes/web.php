@@ -54,9 +54,15 @@ Route::get('/lihatnilai', [PendaftaranController::class, 'nilai']);
 Route::get('/lihatpendaftaran', [PendaftaranController::class, 'lihatpendaftaran']);
 Route::post('/lihatpendaftaran/{filezip}/download', [PendaftaranController::class, 'download'])->name('download.pendaftaran');
 Route::get('/pengaturan', [PengaturanController::class, 'index']);
+Route::get('/pengaturanaslab', [PengaturanController::class, 'index_aslab']);
+Route::get('/pengaturankalab', [PengaturanController::class, 'index_kalab']);
 Route::get('/gantipassword', [PengaturanController::class, 'gantipassword']);
+Route::get('/gantipasswordaslab', [PengaturanController::class, 'gantipasswordaslab']);
+Route::get('/gantipasswordkalab', [PengaturanController::class, 'gantipasswordkalab']);
 Route::post('/pengaturan/{id}/update', [PengaturanController::class, 'update'])->name('reset'); //tambah pendaftaran
 Route::post('/gantipassword/{id}/updatepass', [PengaturanController::class, 'updatepass'])->name('resett'); //tambah pendaftaran
+Route::post('/gantipasswordaslab/{id}/updatepassaslab', [PengaturanController::class, 'updatepassaslab'])->name('resett');
+Route::post('/gantipasswordkalab/{id}/updatepasskalab', [PengaturanController::class, 'updatepasskalab'])->name('resett');
 Route::get('/detaildpeserta/{id}', [PesertaController::class, 'detaildpeserta']);
 
 
@@ -99,7 +105,7 @@ use App\Http\Controllers\InformasiController;
 // Route::get('/dashboardaslab', [InformasiController::class, 'index']);
 Route::post('/add_process', [InformasiController::class, 'add_process']);
 Route::get('/detail/{id}', [InformasiController::class, 'detail']);
-Route::get('/edit/{id}', [InformasiController::class, 'edit']);
+Route::get('/editInfo/{id}', [InformasiController::class, 'edit']);
 Route::post('/edit_process', [InformasiController::class, 'edit_process']);
 Route::get('/delete/{id}', [InformasiController::class, 'destroy']);
 
@@ -107,7 +113,7 @@ use App\Http\Controllers\DataPesertaController;
 Route::get('/daftar_peserta', [DataPesertaController::class, 'index']);
 Route::get('/detail_data/{id}', [DataPesertaController::class, 'detail_data']);
 Route::get('/edit/{id}', [DataPesertaController::class, 'edit']);
-Route::post('/edit_status', [DataPesertaController::class, 'edit_status']);
+Route::post('/edit_status/{idp}', [DataPesertaController::class, 'edit_status']);
 
 
 Route::get('/dashboardaslab', [InformasiController::class, 'index'])

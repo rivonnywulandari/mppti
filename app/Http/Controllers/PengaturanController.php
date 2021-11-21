@@ -33,6 +33,26 @@ class PengaturanController extends Controller
 
     }
 
+    public function index_aslab()
+    {
+        $data_user = DB::table('users') 
+        ->select('users.id','users.name','users.nim', 'users.email')        
+        ->where('users.id', '=', Auth::user()->id)         
+        ->get();
+        return view('aslab.pengaturan', compact('data_user'));
+
+    }
+
+    public function index_kalab()
+    {
+        $data_user = DB::table('users') 
+        ->select('users.id','users.name','users.nim', 'users.email')        
+        ->where('users.id', '=', Auth::user()->id)         
+        ->get();
+        return view('kalab.pengaturan', compact('data_user'));
+
+    }
+
     public function gantipassword()
     {
         
@@ -44,6 +64,29 @@ class PengaturanController extends Controller
      
 
         return view('peserta.gantipassword', compact('data_user'));
+
+    }
+    public function gantipasswordaslab()
+    {
+        $data_user = DB::table('users') 
+        ->select('users.id', 'users.password')        
+        ->where('users.id', '=', Auth::user()->id)         
+        ->get();
+     
+
+        return view('aslab.gantipassword', compact('data_user'));
+
+    }
+
+    public function gantipasswordkalab()
+    {
+        $data_user = DB::table('users') 
+        ->select('users.id', 'users.password')        
+        ->where('users.id', '=', Auth::user()->id)         
+        ->get();
+     
+
+        return view('kalab.gantipassword', compact('data_user'));
 
     }
 
@@ -135,6 +178,46 @@ class PengaturanController extends Controller
 
 
             return redirect('/dashboardpeserta')->with('status', 'Data Akun Berhasil Diubah');
+        }
+    }
+
+    public function updatepassaslab(Request $request, $id)
+    {
+        // $u = User::find($id);
+        
+        if($request->isMethod('post')){
+         
+            // $data_user = $request->all();
+            // $user = User::find($id);
+            // $user = User::where('id',$id)->first();
+            // $user->password =  $data_user['password'];             
+            // $user->save();
+
+            User::where('id', $id)
+            ->update(['password' => Hash::make($request->password)]);
+
+
+            return redirect('/dashboardaslab')->with('status', 'Data Akun Berhasil Diubah');
+        }
+    }
+
+    public function updatepasskalab(Request $request, $id)
+    {
+        // $u = User::find($id);
+        
+        if($request->isMethod('post')){
+         
+            // $data_user = $request->all();
+            // $user = User::find($id);
+            // $user = User::where('id',$id)->first();
+            // $user->password =  $data_user['password'];             
+            // $user->save();
+
+            User::where('id', $id)
+            ->update(['password' => Hash::make($request->password)]);
+
+
+            return redirect('/dashboardkalab')->with('status', 'Data Akun Berhasil Diubah');
         }
     }
 

@@ -22,16 +22,19 @@
                 <div class="w-64 bg-blue-500 h-screen">
                     <div class="flex flex-col w-64 h-screen py-8 bg-white border-r dark:bg-gray-800 dark:border-gray-600">
                         
-                        {{-- Data Diri Akun --}}
+                    {{-- Data Diri Akun --}}
                         <div class="flex flex-col items-center mt-6 -mx-2">
                             <img class="object-cover w-24 h-24 mx-2 rounded-full" src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="avatar">
                             <h4 class="mx-2 mt-2 font-medium text-gray-800 dark:text-gray-200 hover:underline">{{ Auth::user()->name }}</h4>
                             <p class="mx-2 mt-1 text-sm font-medium text-gray-600 dark:text-gray-400 hover:underline">{{ Auth::user()->email }}</p>
+                            <!-- <div class="mt-2 border-2 px-2 rounded-full border-light-blue-500 border-opacity-100">
+                               <p class="font-medium text-gray-600 dark:text-gray-400 text-xs">status:</p>
+                            </div> -->
                         </div>
                         
                         {{-- Navigasi Side Bar --}}
                         <div class="flex flex-col justify-between flex-1 mt-6">
-                            <nav>
+                        <nav>
                                 <a class="flex items-center px-4 py-2 text-gray-700 bg-gray-200 dark:bg-gray-700 dark:text-gray-200" href="/dashboardkalab">
                                     <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="img/home.png">
                                     <span class="mx-4 font-medium">Beranda</span>
@@ -41,7 +44,7 @@
                                     <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="img/data.png">
                                     <span class="mx-4 font-medium">Data Peserta OR</span>
                                 </a>
-                                <a class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700" href="{{url('/pengaturankalab')}}">
+                                <a class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700" href="/pengaturankalab">
                                     <img class="w-5 h-5" viewBox="0 0 24 24" fill="none" src="img/setting.png">
                                     <span class="mx-4 font-medium">Pengaturan</span>
                                 </a>
@@ -53,6 +56,7 @@
                         </div>
                     </div>
                 </div>
+
 
                 {{-- Content Kanan --}}
                 <div class="w-full flex flex-col">
@@ -67,9 +71,78 @@
                     </div>
                    
                     {{-- Content Abu-Abu --}}
-                    <div class="content w-full bg-gray-100 h-full p-3">
+                    <div class="static content w-full bg-gray-100 h-full p-3">
                         {{-- Breadcrumbs --}}
                         @yield('breadcrumbs')
+                         <!--
+  This example requires Tailwind CSS v2.0+ 
+  
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ],
+  }
+  ```
+-->
+<div >
+   
+   <div class="md:grid md:grid-cols-3 md:gap-6">
+   
+     <div class="mt-5 md:mt-0 md:col-span-2">
+     @foreach($data_user as $data_user)
+       <form action="/gantipasswordaslab/{{ $data_user->id }}/updatepassaslab" method="POST">
+               
+      
+         <div class="shadow overflow-hidden sm:rounded-md">
+           <div class="px-4 py-5 bg-white sm:p-6">
+           <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+               Ganti Katasandi<br><br>
+             </h3>
+             <div class="grid grid-cols-6 gap-6">
+            
+             @csrf
+
+               <div class="col-span-6 sm:col-span-4">
+                 <label for="password" class="block text-sm font-medium text-gray-700">Password Lama</label>
+                 <input type="password" name="passwordlama" id="passwordlama" autocomplete="passwordlama" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+               </div>
+               
+               <div class="col-span-6 sm:col-span-4">
+                 <label for="passswordbaru" class="block text-sm font-medium text-gray-700">Passsword Baru</label>
+                 <input type="password" name="password" id="password" autocomplete="password" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+               </div>
+
+               <!-- <div class="col-span-6 sm:col-span-4">
+                 <label for="konfirmasipasswordbaru" class="block text-sm font-medium text-gray-700">Konfirmasi Passsword Baru</label>
+                 <input type="password" name="konfirmasipasswordbaru" id="konfirmasipasswordbaru" autocomplete="konfirmasipasswordbaru" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+               </div> -->
+
+               @endforeach
+ 
+               </div>
+           </div>
+               <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                  <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  Ubah Katasandi
+                  </button>
+              </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+         
+
+         
+    
+
 
                         {{-- Isi content --}}
                         @yield('content')
