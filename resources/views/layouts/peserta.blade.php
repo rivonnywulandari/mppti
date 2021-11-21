@@ -67,7 +67,7 @@
                             <p class="mt-1 white-color font-bold">Sistem Informasi OR Laboratory of Business Intelligence</p>
                         </div>
                         <div class="justify-self-end">
-                            <img class="w-8"src="img/logo.png" alt="logo-lbi"></p>
+                            <img class="w-8"src="{{asset("img/logo.png")}}" alt="logo-lbi"></p>
                         </div>
                     </div>
                    
