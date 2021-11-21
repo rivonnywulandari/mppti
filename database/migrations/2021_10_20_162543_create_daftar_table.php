@@ -29,11 +29,7 @@ class CreateDaftarTable extends Migration
             $table->text('bersediakah')->nullable($value=false);
             $table->text('filezip')->nullable();
             $table->string('status', 50);
-
-            // $table->binary('filezip')->nullable($value=false);
-            // $table->file('ktm')->nullable($value=false);
-            // $table->file('krs')->nullable($value=false);
-            // $table->file('transkrip_nilai')->nullable($value=false);
+            $table->string('tahun_daftar')->nullable($value=false);
             $table->timestamps();
         });
 

@@ -99,7 +99,7 @@
 -->
 <div >
    
-  <div class="md:grid md:grid-cols-3 md:gap-6">
+  <div class="md:grid md:gap-6">
     
     <div class="mt-5 md:mt-0 md:col-span-2">
       <form action="{{ route('download.pendaftaran', [Auth::user()->id]) }}" method="POST" enctype="multipart/form-data">
@@ -107,9 +107,11 @@
         <div class="shadow overflow-hidden sm:rounded-md">
           <div class="px-4 py-5 bg-white sm:p-6">
           <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
-              Riwayat Pendaftaran OR<br><br>
+            <b>Riwayat Data Pendaftaran</b>
+          </h3><hr style="height:20px"">
             </h3>            
             <div class="grid grid-cols-6 gap-6">
+            @if(!$data_pendaftar->isEmpty())
             @foreach ($data_pendaftar as $data_pendaftar)
               <div class="col-span-6 sm:col-span-4">
                 <label for="name" class="block text-sm font-medium text-gray-700">Nama</label>
@@ -132,14 +134,6 @@
                 <input type="text" name="jenis_kelamin" id="jenis_kelamin" autocomplete="jenis_kelamin" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" value="{{ $data_pendaftar->jenis_kelamin }}"readonly>
               </div>
               
-              <!-- <div class="col-span-6 sm:col-span-4">
-                <label for="jenis_kelamin" class="block text-sm font-medium text-gray-700">Jenis Kelamin</label>
-                <select id="jenis_kelamin" name="jenis_kelamin" autocomplete="jenis_kelamin" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                  <option>Laki-laki</option>
-                  <option>Perempuan</option>
-                </select>
-              </div> -->
-
               <div class="col-span-6 sm:col-span-3">
                 <label for="tempat_lahir" class="block text-sm font-medium text-gray-700">Tempat Lahir</label>
                 <input type="text" name="tempat_lahir" id="tempat_lahir" autocomplete="tempat_lahir" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" value="{{ $data_pendaftar->tempat_lahir }}"readonly>
@@ -164,8 +158,6 @@
                   <textarea id="alamat" name="alamat" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" readonly> <?php echo $data_pendaftar->alamat ?> </textarea>
                 </div>
               </div>
-
-
 
               <div class="col-span-6">
                 <label for="alasan" class="block text-sm font-medium text-gray-700">
@@ -217,39 +209,27 @@
                 Link Google Drive (CV, KTM, KRS, dan Transkrip Nilai dalam satu file .zip)<br><br>
                 </label>
                 <a href="{{$data_pendaftar->filezip}}" class="underline" >Download Berkas</a>
-                <!-- <div class="mt-1">
-                  <textarea id="filezip" name="filezip" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"  > <?php echo $data_pendaftar->filezip ?> </textarea>
-                </div> -->
               </div>
 
               <div class="col-span-6">
                   <a href="{{$data_pendaftar->filezip}}" >
                       </a>
               </div>
-
-              <!-- <div lass="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                  <a href="lihatpendaftaran/{{$data_pendaftar->filezip}}/download" download="{{$data_pendaftar->filezip}}">
-                      <button type="button" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Download</button>
-                      </a>
-              </div> -->
-                                  
-              @endforeach       
-
+              @endforeach  
+              @else
+                <div class="col-span-6">
+                  <p class="text-sm text-gray-500">Anda belum melakukan pendaftaran</p>
+                </div>
+              @endif  
                               </div>
                             </div>
                             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                              <!-- <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                Save
-                              </button> -->
                             </div>
                           </div>
                         </form>
                       </div>
                     </div>
                   </div>        
-
-    
-
 
                         {{-- Isi content --}}
                         @yield('content')

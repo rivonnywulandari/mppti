@@ -109,9 +109,9 @@
 
          <div class="shadow overflow-hidden sm:rounded-md">
            <div class="px-4 py-5 bg-white sm:p-6">
-           <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
-               Informasi Akun<br><br>
-             </h3>
+              <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+                <b>Informasi Akun</b>
+              </h3><hr style="height:20px"">
              <div class="grid grid-cols-6 gap-6">
              
                <div class="col-span-6 sm:col-span-4">

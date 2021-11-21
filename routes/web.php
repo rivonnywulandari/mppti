@@ -47,7 +47,6 @@ Route::get('/dashboardpeserta', [PesertaController::class, 'index'])
 Route::get('/pendaftaranor', [PendaftaranController::class, 'index']);
 Route::get('/pendaftaran/create', [PendaftaranController::class, 'create']); //simpan pendaftaran
 Route::post('/pendaftaran/{id}/store', [PendaftaranController::class, 'store'])->name('simpan.pendaftaran'); //tambah pendaftaran
-// Route::get('/pendaftaran/{id}/lihatpendaftaran', [PendaftaranController::class, 'lihatpendaftaran']); //simpan pendaftaran
 
 
 // Route::get('/daftar', [PendaftaranController::class, 'daftar']);

@@ -82,27 +82,39 @@
                         {{-- Breadcrumbs --}}
                         @yield('breadcrumbs')
                        <!-- This example requires Tailwind CSS v2.0+ -->
- <div class="md:grid md:grid-cols-3 md:gap-6">
-    
+ <div class="md:grid md:gap-6">
     <div class="mt-5 md:mt-0 md:col-span-2">
       <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-        <table class="min-w-full divide-y divide-gray-200">
-          <thead class="bg-gray-50">
-          <tr>
-                    <th>Jenis Seleksi</th>
-                    <th>Nilai</th>
-                </tr>
-          </thead>
-          <tbody class="bg-white divide-y divide-gray-200">
-          @foreach ($data_nilai as $data_nilai)
-                    <tr>
-                        <td>{{ $data_nilai->nama_seleksi }}</td>
-                        <td>{{ $data_nilai->nilai }}</td>
-                       
-                    </tr>
-                @endforeach
-          </tbody>
-        </table>
+        <div class="px-4 py-5 bg-white sm:p-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+              <b>Lihat Nilai</b>
+            </h3><hr style="height:20px">
+            
+                <div class="px-3 py-4 flex justify-center">
+                    <table class="w-full text-md bg-white shadow-md rounded mb-4 border">
+                        <thead class="bg-gray-50">
+                            <tr class="border">
+                                <th class="text-left p-3 px-5">No.</th>
+                                <th class="text-left p-3 px-5">Jenis Seleksi</th>
+                                <th class="text-left p-3 px-5">Nilai</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                @forelse ($data_nilai as $i => $data_nilai)
+                                    <tr class="border-b hover:bg-gray-100">
+                                        <td class="p-3 px-5">{{ ++$i }}</td>
+                                        <td class="p-3 px-5">{{ $data_nilai->nama_seleksi }}</td>
+                                        <td class="p-3 px-5">{{ $data_nilai->nilai }}</td>
+                                        
+                                    </tr>
+                                @empty
+                                <tr class="border-b hover:bg-gray-100">
+                                    <td colspan="5"><center><p class="text-sm text-gray-500">Data Nilai Belum Tersedia</p></center></td>
+                                </tr>
+                                @endforelse
+                        </tbody>
+                    </table>
+                </div>
       </div>
   </div>
 </div>
