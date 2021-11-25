@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->integer('id')->autoIncrement();
             $table->string('name');
             $table->string('role');
-            $table->string('nim')->unique();
+            $table->string('nim', 10)->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
