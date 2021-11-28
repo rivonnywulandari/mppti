@@ -120,7 +120,7 @@ return [
     |
     */
 
-    'key' =>'6tFeYeneZoFK7v8TLTBmds3AZOpUYbFt4IR900eTLVQ',
+    'key' =>'base64:6tFeYeneZoFK7v8TLTBmds3AZOpUYbFt4IR900eTLVQ',
 
     'cipher' => 'AES-256-CBC',
 
