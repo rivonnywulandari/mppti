@@ -7,12 +7,16 @@
     <title>Login form</title>
 
     <!-- Font Icon -->
-    <link rel="stylesheet" href="{{asset('Admin/fonts/material-icon/css/material-design-iconic-font.min.css')}}">
+    <!-- <link rel="stylesheet" href="{{asset('Admin/fonts/material-icon/css/material-design-iconic-font.min.css')}}"> -->
+    <link rel="stylesheet" href="https://orlabi.herokuapp.com/Admin/fonts/material-icon/css/material-design-iconic-font.min.css">
+
 
     {{-- boostrap --}}
 
     <!-- Main css -->
-    <link rel="stylesheet" href="{{asset('Admin/css/style.css')}}">
+    <!-- <link rel="stylesheet" href="{{asset('Admin/css/style.css')}}"> -->
+    <link rel="stylesheet" href="https://orlabi.herokuapp.com/Admin/css/style.css">
+
 
 </head>
 <body>
