@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="signin-content">
                     <div class="signin-image">
-                        <figure><img src="{{asset('Admin/images/login.png')}}" alt="sing up image"></figure>
+                        <figure><img src="{{asset('https://orlabi.herokuapp.com/Admin/images/login.png')}}" alt="sing up image"></figure>
                         <a href="/register" class="signup-image-link">Create an account</a>
                     </div>
 
